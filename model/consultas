@@ -1,0 +1,35 @@
+select Usuarios.id_usuario, Usuarios.nombre_usuario, Usuarios.apellido_paterno,
+					  Usuarios.apellido_materno, Usuarios.nombre_favorito, Usuarios.edad, Usuarios.fecha_nacimiento,
+					  Usuarios.calle, Usuarios.cp, Usuarios.celular_usuario, Usuarios.telefono_casa,
+					  Usuarios.telefono_trabajo, Usuarios.correo, Usuarios.tipo as tipoPrivilegio,
+					  Usuarios.estatus, Inscripciones.id_inscripcion, Inscripciones.id_curso as IdCursoInscripcion,
+					  Inscripciones.fecha as FechaInscripcion,Inscripciones.id_user as IdUserInscripcion,
+					  Cursos_Talleres.id_curso as IdCursoTaller, Cursos_Talleres.nombre_curso,
+					  Cursos_Talleres.generacion, Cursos_Talleres.fecha_inicio, Cursos_Talleres.fecha_fin,
+					  Cursos_Talleres.tipo_curso as TipoCursoTalleres, Cursos_Talleres.estatus as estatusCurso,
+					  Tipo_Entrenamiento.id_tipo_entrenamiento, Tipo_Entrenamiento.tipo as TipoTipoEnrenamiento,
+					  Tipo_Entrenamiento.subtipo, Tipo_Entrenamiento.nombre as NombreEntrenamiento,
+					  Tipo_Entrenamiento.subnombre, (Select Count(Notificaciones.id_usuario) from Notificaciones where Usuarios.id_usuario = Notificaciones.id_usuario AND Notificaciones.estatus !=0) as totalNotificaciones 
+					  from Usuarios LEFT JOIN Inscripciones on Usuarios.id_usuario = Inscripciones.id_user LEFT join 
+					  Cursos_Talleres on Inscripciones.id_curso = Cursos_Talleres.id_curso LEFT join 
+					  Tipo_Entrenamiento on Cursos_Talleres.tipo_curso = Tipo_Entrenamiento.id_tipo_entrenamiento
+					  WHERE Usuarios.celular_usuario = "123" and Usuarios.password = "123" 
+					  ORDER by Inscripciones.id_inscripcion DESC
+
+                      select Usuarios.id_usuario, Usuarios.nombre_usuario, Usuarios.apellido_paterno,
+					  Usuarios.apellido_materno, Usuarios.nombre_favorito, Usuarios.edad, Usuarios.fecha_nacimiento,
+					  Usuarios.calle, Usuarios.cp, Usuarios.celular_usuario, Usuarios.telefono_casa,
+					  Usuarios.telefono_trabajo, Usuarios.correo, Usuarios.tipo as tipoPrivilegio,
+					  Usuarios.estatus, Inscripciones.id_inscripcion, Inscripciones.id_curso as IdCursoInscripcion,
+					  Inscripciones.fecha as FechaInscripcion,Inscripciones.id_user as IdUserInscripcion,
+					  Cursos_Talleres.id_curso as IdCursoTaller, Cursos_Talleres.nombre_curso,
+					  Cursos_Talleres.generacion, Cursos_Talleres.fecha_inicio, Cursos_Talleres.fecha_fin,
+					  Cursos_Talleres.tipo_curso as TipoCursoTalleres, Cursos_Talleres.estatus as estatusCurso,
+					  Tipo_Entrenamiento.id_tipo_entrenamiento, Tipo_Entrenamiento.tipo as TipoTipoEnrenamiento,
+					  Tipo_Entrenamiento.subtipo, Tipo_Entrenamiento.nombre as NombreEntrenamiento,
+					  Tipo_Entrenamiento.subnombre, (Select Count(Notificaciones.id_usuario) from Notificaciones where Usuarios.id_usuario = Notificaciones.id_usuario AND Notificaciones.estatus !=0) as totalNotificaciones, (Select Count(Imo.id_user) from Imo where Usuarios.id_usuario = Imo.imo) as totalEnrolados
+					  from Usuarios LEFT JOIN Inscripciones on Usuarios.id_usuario = Inscripciones.id_user LEFT join 
+					  Cursos_Talleres on Inscripciones.id_curso = Cursos_Talleres.id_curso LEFT join 
+					  Tipo_Entrenamiento on Cursos_Talleres.tipo_curso = Tipo_Entrenamiento.id_tipo_entrenamiento
+					  WHERE Usuarios.celular_usuario = "123" and Usuarios.password = "123"
+					  ORDER by Inscripciones.id_inscripcion DESC

@@ -1,0 +1,1 @@
+select * from Cursos_Talleres left join Tipo_Entrenamiento on Cursos_Talleres.tipo_curso = Tipo_Entrenamiento.subtipo where Tipo_Entrenamiento.subtipo = 4 or Tipo_Entrenamiento.subtipo = 1 ORDER BY Cursos_Talleres.fecha_inicio DESC
